@@ -24,6 +24,13 @@ function init() {
   for (let i = 0; i < 3; i++) {
     loadSprite('button/'+i, 'button/'+i+'.png');
   }
+  for (let i = 0; i < 10; i++) {
+    loadSound('click/'+i,'click/'+i+'.wav')
+  }
+  for (let i = 0; i < 2; i++) {
+    loadSound('fail/'+i,'fail/'+i+'.wav')
+  }
+  loadSound('open','open.wav')
 
   main();
 }
@@ -59,7 +66,7 @@ function main() {
         numbers[i] = random;
         current[i] = 0;
       }
-      playSound('open.wav');
+      playSound('open');
     }
     counter += delta;
     if (offsetY > 0.5) {

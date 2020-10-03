@@ -7,7 +7,7 @@ function mouseClick(e) {
         for (let j = 0; j < 5; j++) {
           if (y > 388 + (i*154) && y < 388 + (i*154) + 151 && x > 575 + (j * 154) && x < 575 + (j * 154) + 151)
             if (number + 1 == numbers[j+(5*i)]) {
-              playSound(`click/${number}.wav`);
+              playSound(`click/${number}`);
               current[j+(5*i)] = 2;
               if (number == 9) {
                 status = 'close';
@@ -16,7 +16,7 @@ function mouseClick(e) {
                 number++;
               }
             } else {
-              playSound(`fail/${randomInt(0,1)}.wav`);
+              playSound(`fail/${randomInt(0,1)}`);
               number = 0;
               status = 'fail';
             }
