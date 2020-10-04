@@ -1,6 +1,6 @@
 function mouseClick(e) {
-  let x = e.layerX;
-  let y = e.layerY;
+  let x = e.layerX*(canvas.width/canvas.clientWidth);
+  let y = e.layerY*(canvas.height/canvas.clientHeight);
   switch (e.button) {
     case 0:
       for (let i = 0; i < 2; i++) {
