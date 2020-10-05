@@ -9,16 +9,24 @@ function mouseClick(e) {
             if (number + 1 == numbers[j+(5*i)]) {
               playSound(`click/${number}`);
               current[j+(5*i)] = 2;
-              if (number == 9) {
+              number++;
+              if (number == 1) {
+                timerTime = 0;
+                timer = true;
+              } else if (number == 10) {
+                timer = false;
+                if (timerTime < best || best == null) {
+                  best = timerTime;
+                }
                 status = 'close';
                 number = 0;
-              } else {
-                number++;
               }
             } else {
               playSound(`fail/${randomInt(0,1)}`);
               number = 0;
               status = 'fail';
+              timer = false;
+              timerTime = 0;
             }
         }
       }

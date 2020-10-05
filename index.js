@@ -6,9 +6,15 @@ var left;
 var numbers = [];
 var current = [];
 var number = 0;
+
 var status = 'game';
 var counter = 0;
 var offsetY = 0;
+
+var timerTime = 0;
+var timer = false;
+var best;
+
 function generate() {
   left = [1,2,3,4,5,6,7,8,9,10]
   for (let i = 0; i < 10; i++) {
@@ -18,6 +24,13 @@ function generate() {
     current[i] = 0;
   }
 }
+function formatTimer(number) {
+
+  str = number.toFixed(2).toString().replace('.',':');
+  return str;
+}
+
+
 function init() {
   generate();
   loadSprite('bg', 'bg.png');
@@ -41,6 +54,7 @@ function init() {
 function main() {
   delta = (performance.now() - lastCalledTime)/1000;
   lastCalledTime = performance.now();
+  if (timer) timerTime += delta;
   // ------------------ Draw ------------------ //
   fill('#fff');
   drawSprite('bg', 0, 0)
@@ -103,6 +117,9 @@ function main() {
     }
   }
   drawSprite('overlay', 0, offsetY)
+  drawText(formatTimer(timerTime),canvas.width/2,100,"50px Roboto", '#fff',"center")
+  if (best != null) drawText("Best: " + formatTimer(best),canvas.width/2,50,"50px Roboto", '#fff',"center")
+
   //Debug
   setTimeout(main, 1000/fpsLimit);
 }

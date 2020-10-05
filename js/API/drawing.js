@@ -23,3 +23,17 @@ function fill(color) {
   c.fillStyle = color;
   c.fillRect(0,0,width,height);
 }
+
+function drawText(text,x,y,font,color,align) {
+  let size = font.split('px');
+  c.font = font;
+  c.textAlign = align;
+  c.fillStyle = color;
+  text = text.toString();
+  let temp = text.split('\n');
+  for (let i = 0; i < temp.length; i++) {
+    let _x = x;
+    let _y = y + (i*size[0]);
+    c.fillText(temp[i],_x, _y);
+  }
+}
